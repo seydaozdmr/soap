@@ -14,7 +14,7 @@
 	<name>soap</name>
 	<description>Soap Project</description>
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>11</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -31,10 +31,29 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
+		<!--creating wsdl dependency -->
 		<dependency>
 			<groupId>wsdl4j</groupId>
 			<artifactId>wsdl4j</artifactId>
+		</dependency>
+
+
+		<!-- Java 11 için en uygun paketler -->
+		<dependency>
+			<groupId>javax.activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>2.3.2</version>
 		</dependency>
 	</dependencies>
 
@@ -59,6 +78,7 @@
 				<configuration>
 					<sources>
 						<source>${project.basedir}/src/main/resources/countries.xsd</source>
+<!--						<targetPath>${project.basedir}/src/main/java</targetPath>-->
 					</sources>
 				</configuration>
 			</plugin>

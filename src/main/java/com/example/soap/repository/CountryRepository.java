@@ -11,7 +11,7 @@ import java.util.Map;
 
 @Component
 public class CountryRepository {
-    private static final Map<String, Country> countries=new HashMap<>();
+    private final Map<String, Country> countries=new HashMap<>();
 
     @PostConstruct
     public void initData(){
@@ -40,8 +40,7 @@ public class CountryRepository {
         countries.put(uk.getName(), uk);
     }
 
-    public Country findCountry(String name){
-        Assert.notNull("name","Ülke ismi boş olamaz");
-        return countries.get(name);
+    public Map<String, Country> getCountries() {
+        return countries;
     }
 }
