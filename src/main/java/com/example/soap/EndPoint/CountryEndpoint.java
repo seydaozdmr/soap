@@ -41,15 +41,9 @@ public class CountryEndpoint {
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "saveCountryRequest")
     @ResponsePayload
     public SaveCountryResponse saveCountry(@RequestPayload SaveCountryRequest request){
-
-        //TODO burası düzeltilecek???
         SaveCountryResponse response=new SaveCountryResponse();
-        //response.setCountry(countryService.saveCountry(request.getCountry()));
         Country savedCountry= countryService.saveCountry(request.getCountry());
-        response.getCountry().setName(savedCountry.getName());
-        response.getCountry().setCapital(savedCountry.getCapital());
-        response.getCountry().setPopulation(savedCountry.getPopulation());
-        response.getCountry().setCurrency(savedCountry.getCurrency());
+        response.setCountry(savedCountry);
         return response;
     }
 

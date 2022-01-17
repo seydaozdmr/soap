@@ -25,7 +25,8 @@ public class CountryService {
     }
 
     public Country saveCountry(Country country){
-        return countryRepository.getCountries().put(country.getName(),country);
+        countryRepository.getCountries().put(country.getName(),country);
+        return country;
     }
 
     public Country deleteCountry(String name){
