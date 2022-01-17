@@ -47,5 +47,15 @@ public class CountryEndpoint {
         return response;
     }
 
-
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "deleteCountryRequest")
+    @ResponsePayload
+    public DeleteCountryResponse deleteCountry(@RequestPayload DeleteCountryRequest request){
+        DeleteCountryResponse response=new DeleteCountryResponse();
+        Country deletedCountry= countryService.deleteCountry(request.getName());
+        if(deletedCountry!=null)
+            response.setStatus(deletedCountry.getName()+" silinmiştir");
+        else
+            response.setStatus("silme işlemi başarısız");
+        return response;
+    }
 }
