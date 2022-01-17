@@ -1,5 +1,6 @@
 package com.example.soap.service;
 
+import com.example.soap.exception.CountryNotFoundException;
 import com.example.soap.repository.CountryRepository;
 import io.spring.guides.gs_producing_web_service.Country;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,10 @@ public class CountryService {
     }
 
     public Country findCountry(String name){
-        return countryRepository.getCountries().get(name);
+        Country country=countryRepository.getCountries().get(name);
+        if(country==null)
+            throw  new CountryNotFoundException(name+" istenen ülke bulunamadı");
+        return country;
     }
 
     public Country saveCountry(Country country){
